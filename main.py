@@ -23,6 +23,7 @@ import datetime
 import threading
 
 def memoryAndNetwork():
+    os.system('chmod 777 NeverIdle')
     os.system('./NeverIdle -m 3 -n 0h10m0s')
 
 # def memory():
