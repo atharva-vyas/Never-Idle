@@ -1,3 +1,5 @@
+# wget https://github.com/layou233/NeverIdle/releases/download/0.1/NeverIdle-linux-arm64 -O NeverIdle
+
 # CPU (4 Cores for 5 Seconds)
     # stress-ng --cpu <number_of_cpu_cores> --timeout <duration_in_seconds>
     # stress-ng --cpu 1 --timeout 60
@@ -20,26 +22,29 @@ import time
 import datetime
 import threading
 
-def memory():
-    os.system('stress-ng --vm 3 --vm-bytes 1G')
-    
-def network():
-    nextRunEpoch = 0
-    while True:
-        epoch_time = int(time.time())
-        
-        if epoch_time > nextRunEpoch:
-            dt = datetime.datetime.fromtimestamp(epoch_time)
-            new_dt = dt + datetime.timedelta(minutes=10)
-            new_epoch_time = int(new_dt.timestamp())
+def memoryAndNetwork():
+    os.system('./NeverIdle -m 3 -n 0h10m0s')
 
-            nextRunEpoch = new_epoch_time
+# def memory():
+#     os.system('stress-ng --vm 3 --vm-bytes 1G')
+    
+# def network():
+#     nextRunEpoch = 0
+#     while True:
+#         epoch_time = int(time.time())
+        
+#         if epoch_time > nextRunEpoch:
+#             dt = datetime.datetime.fromtimestamp(epoch_time)
+#             new_dt = dt + datetime.timedelta(minutes=10)
+#             new_epoch_time = int(new_dt.timestamp())
+
+#             nextRunEpoch = new_epoch_time
             
-            i = 10
-            o = 0
-            while o < i:
-                os.system('speedtest-cli --server 50463')
-                o += 1
+#             i = 10
+#             o = 0
+#             while o < i:
+#                 os.system('speedtest-cli --server 50463')
+#                 o += 1
 
 def cpu():
     nextRunEpoch = 0
@@ -54,17 +59,19 @@ def cpu():
             nextRunEpoch = new_epoch_time
             
             # os.system('stress-ng --cpu 1 --timeout 60')
-            os.system('stress-ng --cpu 1 --cpu-load 30 --timeout 60')
+            os.system('stress-ng --cpu 4 --cpu-load 30 --timeout 60')
 
 
 if __name__ =="__main__":
     thread1 = threading.Thread(target=cpu)
-    thread2 = threading.Thread(target=network)
-    thread3 = threading.Thread(target=memory)
+    # thread2 = threading.Thread(target=network)
+    # thread3 = threading.Thread(target=memory)
+    thread4 = threading.Thread(target=memoryAndNetwork)
     
     thread1.start()
-    thread2.start()
-    thread3.start()
+    # thread2.start()
+    # thread3.start()
+    thread4.start()
     
 
 # os.system('stress-ng --cpu 1 --timeout 60')
