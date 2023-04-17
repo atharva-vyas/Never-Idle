@@ -60,7 +60,7 @@ def cpu():
             nextRunEpoch = new_epoch_time
             
             # os.system('stress-ng --cpu 1 --timeout 60')
-            os.system('stress-ng --cpu 4 --cpu-load 30 --timeout 60')
+            os.system('stress-ng --cpu 4 --cpu-load 20 --timeout 60')
 
 
 if __name__ =="__main__":
