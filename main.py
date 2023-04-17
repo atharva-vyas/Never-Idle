@@ -35,7 +35,7 @@ def network():
 
             nextRunEpoch = new_epoch_time
             
-            os.system('stress-ng --vm 3 --vm-bytes 1G')
+        os.system('speedtest-cli --server 50463')
 
 def cpu():
     nextRunEpoch = 0
