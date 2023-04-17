@@ -49,17 +49,18 @@ def cpu():
 
             nextRunEpoch = new_epoch_time
             
-            os.system('stress-ng --cpu 1 --timeout 60')
+            # os.system('stress-ng --cpu 1 --timeout 60')
+            os.system('stress-ng --cpu 4 --cpu-load 30 --timeout 60')
 
 
 if __name__ =="__main__":
     thread1 = threading.Thread(target=cpu)
-    thread2 = threading.Thread(target=network)
-    thread3 = threading.Thread(target=memory)
+    # thread2 = threading.Thread(target=network)
+    # thread3 = threading.Thread(target=memory)
     
     thread1.start()
-    thread2.start()
-    thread3.start()
+    # thread2.start()
+    # thread3.start()
     
 
 # os.system('stress-ng --cpu 1 --timeout 60')
