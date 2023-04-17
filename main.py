@@ -35,7 +35,11 @@ def network():
 
             nextRunEpoch = new_epoch_time
             
-            os.system('speedtest-cli --server 50463')
+            i = 10
+            o = 0
+            while o < i:
+                os.system('speedtest-cli --server 50463')
+                o += 1
 
 def cpu():
     nextRunEpoch = 0
@@ -55,12 +59,12 @@ def cpu():
 
 if __name__ =="__main__":
     thread1 = threading.Thread(target=cpu)
-    # thread2 = threading.Thread(target=network)
-    # thread3 = threading.Thread(target=memory)
+    thread2 = threading.Thread(target=network)
+    thread3 = threading.Thread(target=memory)
     
     thread1.start()
-    # thread2.start()
-    # thread3.start()
+    thread2.start()
+    thread3.start()
     
 
 # os.system('stress-ng --cpu 1 --timeout 60')
