@@ -64,12 +64,12 @@ def cpu():
 
 
 if __name__ =="__main__":
-    thread1 = threading.Thread(target=cpu)
+    # thread1 = threading.Thread(target=cpu)
     # thread2 = threading.Thread(target=network)
     # thread3 = threading.Thread(target=memory)
     thread4 = threading.Thread(target=memoryAndNetwork)
     
-    thread1.start()
+    # thread1.start()
     # thread2.start()
     # thread3.start()
     thread4.start()
